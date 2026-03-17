@@ -7,67 +7,61 @@
 </head>
 <body>
 
-    <main class="page">
+    <div class="layout">
 
-        <header class="hero">
-            <h1>Mini Blog</h1>
-            <p class="subtitle">Consulta, busca y crea publicaciones usando DummyJSON.</p>
-        </header>
+        <aside class="sidebar">
+            <div class="brand-box">
+                <h1>Mini Blog</h1>
+                <p>Panel de publicaciones</p>
+            </div>
 
-        <section class="card">
-            <h2>Buscar posts</h2>
-
-            <div class="search-row">
-                <input id="searchInput" type="text" placeholder="Escribe una palabra para buscar...">
+            <div class="side-card">
+                <h2>Buscar posts</h2>
+                <input id="searchInput" type="text" placeholder="Buscar posts...">
                 <button type="button" onclick="searchPosts()">Buscar</button>
             </div>
-        </section>
 
-        <section class="card">
-            <h2>Crear Post</h2>
-
-            <div class="form-group">
+            <div class="side-card">
+                <h2>Crear Post</h2>
                 <input id="title" type="text" placeholder="Título">
-            </div>
-
-            <div class="form-group">
                 <textarea id="body" placeholder="Contenido"></textarea>
-            </div>
-
-            <div class="button-left">
-                <button type="button" onclick="createPost()">Publicar</button>
-            </div>
-        </section>
-
-        <section class="card">
-            <h2>Estado de la aplicación</h2>
-
-            <div id="idleState" class="state-box">
-                Esperando acción...
-            </div>
-
-            <div id="loadingState" class="state-box hidden">
-                Cargando posts...
-            </div>
-
-            <div id="emptyState" class="state-box hidden">
-                No se encontraron resultados.
-            </div>
-
-            <div id="errorState" class="state-box hidden">
-                Ocurrió un error al cargar los posts.
-                <div class="retry-row">
-                    <button type="button" onclick="loadPosts()">Retry</button>
+                <div class="button-left">
+                    <button type="button" onclick="createPost()">Publicar</button>
                 </div>
             </div>
-        </section>
+        </aside>
 
-        <section class="card">
-            <h2>Publicaciones</h2>
-            <section id="postsContainer" class="posts-grid"></section>
-        </section>
+        <main class="content">
+            <section class="top-panel">
+                <h2>Actualización de publicaciones</h2>
+                <p>Consulta, busca y crea posts usando DummyJSON</p>
+            </section>
 
-    </main>
+            <section class="state-panel">
+                <div id="idleState" class="state-box">
+                    Esperando acción...
+                </div>
+
+                <div id="loadingState" class="state-box hidden">
+                    Cargando posts...
+                </div>
+
+                <div id="emptyState" class="state-box hidden">
+                    No se encontraron resultados.
+                </div>
+
+                <div id="errorState" class="state-box hidden">
+                    Ocurrió un error al cargar los posts.
+                    <div class="retry-row">
+                        <button type="button" onclick="loadPosts()">Retry</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="postsContainer" class="posts-list"></section>
+        </main>
+
+    </div>
 
     <script src="js/api.js"></script>
     <script src="js/ui.js"></script>

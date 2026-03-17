@@ -3,6 +3,17 @@ const searchInput = document.getElementById("searchInput");
 const titleInput = document.getElementById("title");
 const bodyInput = document.getElementById("body");
 
+let apiPosts = [];
+let localPosts = JSON.parse(localStorage.getItem("localPosts")) || [];
+
+function saveLocalPosts() {
+    localStorage.setItem("localPosts", JSON.stringify(localPosts));
+}
+
+function getAllPosts() {
+    return [...localPosts, ...apiPosts];
+}
+
 function renderPosts(posts) {
     postsContainer.innerHTML = "";
 
@@ -24,21 +35,24 @@ async function loadPosts() {
     showState("loading");
 
     try {
-        const posts = await getPosts();
+        apiPosts = await getPosts();
 
-        if (posts.length === 0) {
+        const allPosts = getAllPosts();
+
+        if (allPosts.length === 0) {
             showState("empty");
             return;
         }
 
-        renderPosts(posts);
+        showState("idle");
+        renderPosts(allPosts);
     } catch (error) {
         showState("error");
     }
 }
 
 async function searchPosts() {
-    const query = searchInput.value.trim();
+    const query = searchInput.value.trim().toLowerCase();
 
     postsContainer.innerHTML = "";
 
@@ -50,14 +64,22 @@ async function searchPosts() {
     showState("loading");
 
     try {
-        const posts = await searchPostsAPI(query);
+        const searchedApiPosts = await searchPostsAPI(query);
 
-        if (posts.length === 0) {
+        const filteredLocalPosts = localPosts.filter(post =>
+            post.title.toLowerCase().includes(query) ||
+            post.body.toLowerCase().includes(query)
+        );
+
+        const allResults = [...filteredLocalPosts, ...searchedApiPosts];
+
+        if (allResults.length === 0) {
             showState("empty");
             return;
         }
 
-        renderPosts(posts);
+        showState("idle");
+        renderPosts(allResults);
     } catch (error) {
         showState("error");
     }
@@ -77,24 +99,34 @@ async function createPost() {
     try {
         const newPost = await createPostAPI(title, body);
 
-        alert("Post creado correctamente.");
+        const customPost = {
+            id: Date.now(),
+            title: newPost.title,
+            body: newPost.body
+        };
+
+        localPosts.unshift(customPost);
+        saveLocalPosts();
 
         titleInput.value = "";
         bodyInput.value = "";
 
-        postsContainer.innerHTML = `
-            <article class="post">
-                <h3>${newPost.title}</h3>
-                <p>${newPost.body}</p>
-            </article>
-        `;
+        showState("idle");
+        renderPosts(getAllPosts());
+
+        alert("Post creado correctamente.");
     } catch (error) {
         showState("error");
     }
 }
 
+searchInput.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        searchPosts();
+    }
+});
+
 window.onload = function () {
     showState("idle");
     loadPosts();
 };
-
