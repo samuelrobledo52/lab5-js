@@ -1,117 +1,130 @@
- Mini Blog – Laboratorio JavaScript
- Descripción
+ #  Mini Blog – Laboratorio JavaScript
 
-Mini Blog es una aplicación web sencilla desarrollada utilizando HTML, CSS y JavaScript (Vanilla JavaScript). El objetivo del proyecto es demostrar cómo consumir una API externa, manipular el DOM dinámicamente y manejar distintos estados de la interfaz dentro de una aplicación web.
+##  Descripción
 
-La aplicación permite consultar publicaciones desde una API pública, buscar contenido específico y crear nuevas publicaciones desde la interfaz del usuario.
+**Mini Blog** es una aplicación web desarrollada utilizando **HTML, CSS y JavaScript (Vanilla JavaScript)**.  
+El objetivo del proyecto es demostrar cómo consumir una API externa, manipular el DOM dinámicamente y manejar distintos estados de la interfaz dentro de una aplicación web.
 
-Para simular el comportamiento de una aplicación real, el proyecto utiliza la API pública DummyJSON, que proporciona endpoints para obtener, buscar y crear publicaciones.
+La aplicación permite:
 
-Además, las publicaciones creadas por el usuario se almacenan utilizando localStorage, lo que permite que permanezcan visibles incluso después de recargar la página.
+- Visualizar publicaciones obtenidas desde una API.
+- Buscar publicaciones por palabra clave.
+- Crear nuevas publicaciones desde la interfaz.
+- Guardar publicaciones creadas utilizando **localStorage**.
 
- Funcionalidades principales
- Visualización de publicaciones
+Para simular el funcionamiento de una aplicación real, el proyecto utiliza la **API pública DummyJSON**.
 
-Cuando la página se carga, la aplicación realiza una solicitud a la API de DummyJSON para obtener una lista de publicaciones. Estas publicaciones se renderizan dinámicamente en la interfaz utilizando JavaScript.
+---
 
-Cada publicación muestra:
+#  Funcionalidades
 
-Título del post
+##  Visualización de publicaciones
 
-Contenido del post
+Cuando la página se carga, la aplicación consulta la API para obtener publicaciones y mostrarlas dinámicamente en la interfaz.
 
- Búsqueda de publicaciones
+Cada publicación contiene:
 
-La aplicación incluye un sistema de búsqueda que permite encontrar publicaciones utilizando palabras clave.
+- **Título**
+- **Contenido del post**
 
-El proceso consiste en:
+---
 
-El usuario introduce una palabra en el campo de búsqueda.
+## 🔍 Búsqueda de publicaciones
 
-La aplicación consulta la API utilizando esa palabra.
+El usuario puede buscar publicaciones utilizando palabras clave.
 
-También se revisan las publicaciones creadas por el usuario.
+El proceso funciona de la siguiente manera:
 
-Se muestran los resultados coincidentes.
+1. El usuario escribe una palabra en el campo de búsqueda.
+2. La aplicación consulta la API.
+3. También se revisan las publicaciones creadas localmente.
+4. Se muestran los resultados coincidentes.
 
-Si no se encuentran resultados, la aplicación muestra un mensaje indicando que no existen coincidencias.
+Si no existen resultados, la interfaz muestra un mensaje indicando que no se encontraron publicaciones.
 
- Creación de publicaciones
+---
+
+## ✏️ Creación de publicaciones
 
 El usuario puede crear nuevas publicaciones utilizando el formulario disponible en el panel lateral.
 
-El flujo de funcionamiento es el siguiente:
+Proceso:
 
-El usuario introduce un título y contenido.
+1. El usuario ingresa un **título** y **contenido**.
+2. Se envía una solicitud **POST** a la API.
+3. La publicación aparece inmediatamente en la interfaz.
+4. También se guarda en **localStorage** para mantenerla después de recargar la página.
 
-Se envía una solicitud POST a la API.
+Esto permite crear múltiples publicaciones dentro de la aplicación.
 
-La publicación aparece inmediatamente en la interfaz.
+---
 
-La publicación también se guarda en localStorage, lo que permite mantenerla visible después de recargar la página.
+# ⚙️ Manejo de estados de la interfaz (UI States)
 
-Esto permite que el usuario pueda crear múltiples publicaciones dentro de la aplicación.
+La aplicación utiliza distintos estados para mejorar la experiencia del usuario.
 
- Manejo de estados de la interfaz (UI States)
+| Estado | Descripción |
+|------|-------------|
+| **Idle** | Esperando interacción del usuario |
+| **Loading** | Los datos se están cargando |
+| **Empty** | No se encontraron resultados |
+| **Error** | Ocurrió un error al consultar la API |
 
-La aplicación implementa diferentes estados para comunicar claramente lo que está ocurriendo en la interfaz.
+---
 
-Estado	Descripción
-Idle	Esperando interacción del usuario
-Loading	Indica que los datos se están cargando
-Empty	No se encontraron resultados
-Error	Ocurrió un error al consultar la API
+# 🧩 Tecnologías utilizadas
 
-Estos estados mejoran la experiencia del usuario al interactuar con la aplicación.
+Este proyecto fue desarrollado utilizando:
 
- Tecnologías utilizadas
+- **HTML5**
+- **CSS3**
+- **JavaScript (Vanilla JS)**
+- **Fetch API**
+- **localStorage**
+- **NGINX (servidor local)**
 
-El proyecto fue desarrollado utilizando las siguientes tecnologías:
+---
 
-HTML5 – estructura de la aplicación
+# 🌐 API utilizada
 
-CSS3 – diseño y estilos visuales
+La aplicación utiliza la API pública:
 
-JavaScript (Vanilla JS) – lógica de la aplicación
-
-Fetch API – consumo de servicios externos
-
-localStorage – almacenamiento local en el navegador
-
-NGINX – servidor web para ejecución local
-
- API utilizada
-
-La aplicación utiliza la siguiente API pública:
-
-DummyJSON
+### DummyJSON
 
 https://dummyjson.com
 
-Endpoints utilizados
+### Endpoints utilizados
 
 Obtener publicaciones
 
+
 https://dummyjson.com/posts
+
 
 Buscar publicaciones
 
+
 https://dummyjson.com/posts/search?q=texto
+
 
 Crear publicación
 
+
 https://dummyjson.com/posts/add
- Ejecución del proyecto
 
-Para ejecutar el proyecto localmente se utilizó NGINX en WSL.
 
-1️ Copiar el proyecto al servidor NGINX
+---
+
+#  Ejecución del proyecto
+
+Para ejecutar el proyecto localmente se utilizó **NGINX en WSL**.
+
+### 1️ Copiar el proyecto al servidor
+
+```bash
 sudo cp -r ~/Lab5-js /var/www/html/
-2️ Abrir la aplicación en el navegador
+2️ Abrir la aplicación
 http://localhost/Lab5-js
-
-Una vez abierta la página, las publicaciones se cargarán automáticamente desde la API.
-
  Estructura del proyecto
 Lab5-js
 │
@@ -125,22 +138,27 @@ Lab5-js
     ├── api.js
     ├── ui.js
     └── app.js
-    
-Descripción de archivos
 Archivo	Función
 index.html	Estructura principal de la aplicación
-styles.css	Estilos visuales del proyecto
-api.js	Funciones encargadas de consumir la API
-ui.js	Manejo de los estados de la interfaz
+styles.css	Estilos visuales
+api.js	Funciones para consumir la API
+ui.js	Manejo de estados de la interfaz
 app.js	Lógica principal de la aplicación
- Autor
+
+Autor
 
 Samuel Robledo
 Universidad del Valle de Guatemala
 Curso: Sistemas Web
 
- Conclusión
+Conclusión
 
-Este laboratorio permitió practicar conceptos fundamentales del desarrollo web moderno, como el consumo de APIs externas, la manipulación dinámica del DOM y la implementación de estados de interfaz que mejoran la experiencia del usuario.
+Este laboratorio permitió aplicar conceptos fundamentales del desarrollo web moderno, incluyendo:
 
-La aplicación puede ampliarse fácilmente agregando funcionalidades adicionales como edición de publicaciones, eliminación de posts o autenticación de usuarios
+Consumo de APIs externas
+
+Programación asincrónica con JavaScript
+
+Manipulación dinámica del DOM
+
+Persistencia de datos en el navegado
