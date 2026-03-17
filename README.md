@@ -121,11 +121,11 @@ Para ejecutar el proyecto localmente se utilizó **NGINX en WSL**.
 
 ### 1️ Copiar el proyecto al servidor
 
-```bash
-sudo cp -r ~/Lab5-js /var/www/html/
-2️ Abrir la aplicación
+
+
+#Abrir la aplicación
 http://localhost/Lab5-js
- Estructura del proyecto
+#📂 Estructura del proyecto
 Lab5-js
 │
 ├── index.html
@@ -138,20 +138,21 @@ Lab5-js
     ├── api.js
     ├── ui.js
     └── app.js
-Archivo	Función
+    
+#Archivo	Función
 index.html	Estructura principal de la aplicación
 styles.css	Estilos visuales
 api.js	Funciones para consumir la API
 ui.js	Manejo de estados de la interfaz
 app.js	Lógica principal de la aplicación
 
-Autor
+#👨‍💻 Autor
 
 Samuel Robledo
 Universidad del Valle de Guatemala
 Curso: Sistemas Web
 
-Conclusión
+#📄 Conclusión
 
 Este laboratorio permitió aplicar conceptos fundamentales del desarrollo web moderno, incluyendo:
 
