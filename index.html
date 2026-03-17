@@ -1,53 +1,76 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Mini Blog</title>
-<link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <title>Mini Blog</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-<header>
-<h1>Mini Blog</h1>
+    <main class="page">
 
-<input id="searchInput" placeholder="Buscar posts...">
-<button onclick="searchPosts()">Buscar</button>
+        <header class="hero">
+            <h1>Mini Blog</h1>
+            <p class="subtitle">Consulta, busca y crea publicaciones usando DummyJSON.</p>
+        </header>
 
-</header>
+        <section class="card">
+            <h2>Buscar posts</h2>
 
-<section id="formSection">
-<h2>Crear Post</h2>
+            <div class="search-row">
+                <input id="searchInput" type="text" placeholder="Escribe una palabra para buscar...">
+                <button type="button" onclick="searchPosts()">Buscar</button>
+            </div>
+        </section>
 
-<input id="title" placeholder="Título">
-<textarea id="body" placeholder="Contenido"></textarea>
-<button onclick="createPost()">Publicar</button>
+        <section class="card">
+            <h2>Crear Post</h2>
 
-</section>
+            <div class="form-group">
+                <input id="title" type="text" placeholder="Título">
+            </div>
 
-<section id="uiStates">
+            <div class="form-group">
+                <textarea id="body" placeholder="Contenido"></textarea>
+            </div>
 
-<div id="idleState">Esperando acción...</div>
+            <div class="button-left">
+                <button type="button" onclick="createPost()">Publicar</button>
+            </div>
+        </section>
 
-<div id="loadingState" class="hidden">
-Cargando posts...
-</div>
+        <section class="card">
+            <h2>Estado de la aplicación</h2>
 
-<div id="emptyState" class="hidden">
-No se encontraron resultados
-</div>
+            <div id="idleState" class="state-box">
+                Esperando acción...
+            </div>
 
-<div id="errorState" class="hidden">
-Ocurrió un error
-<button onclick="loadPosts()">Retry</button>
-</div>
+            <div id="loadingState" class="state-box hidden">
+                Cargando posts...
+            </div>
 
-</section>
+            <div id="emptyState" class="state-box hidden">
+                No se encontraron resultados.
+            </div>
 
-<section id="postsContainer"></section>
+            <div id="errorState" class="state-box hidden">
+                Ocurrió un error al cargar los posts.
+                <div class="retry-row">
+                    <button type="button" onclick="loadPosts()">Retry</button>
+                </div>
+            </div>
+        </section>
 
-<script src="js/api.js"></script>
-<script src="js/ui.js"></script>
-<script src="js/app.js"></script>
+        <section class="card">
+            <h2>Publicaciones</h2>
+            <section id="postsContainer" class="posts-grid"></section>
+        </section>
 
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
