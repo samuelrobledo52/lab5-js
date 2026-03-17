@@ -163,3 +163,6 @@ Programación asincrónica con JavaScript
 Manipulación dinámica del DOM
 
 Persistencia de datos en el navegado
+### Link del video
+https://youtu.be/5ATk1AMQnvU?si=vOmlt5HrTx8Natfi
+
