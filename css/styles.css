@@ -1,0 +1,38 @@
+body{
+font-family: "Times New Roman", Times, serif;
+margin:40px;
+background:#f4f4f4;
+}
+
+header{
+margin-bottom:30px;
+}
+
+input,textarea{
+width:100%;
+padding:10px;
+margin-top:10px;
+font-family: "Times New Roman", Times, serif;
+}
+
+button{
+margin-top:10px;
+padding:10px;
+cursor:pointer;
+font-family: "Times New Roman", Times, serif;
+}
+
+#postsContainer{
+margin-top:30px;
+}
+
+.post{
+background:white;
+padding:15px;
+margin-bottom:10px;
+border-radius:5px;
+}
+
+.hidden{
+display:none;
+}

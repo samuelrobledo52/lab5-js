@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mini Blog</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+<h1>Mini Blog</h1>
+
+<input id="searchInput" placeholder="Buscar posts...">
+<button onclick="searchPosts()">Buscar</button>
+
+</header>
+
+<section id="formSection">
+<h2>Crear Post</h2>
+
+<input id="title" placeholder="Título">
+<textarea id="body" placeholder="Contenido"></textarea>
+<button onclick="createPost()">Publicar</button>
+
+</section>
+
+<section id="uiStates">
+
+<div id="idleState">Esperando acción...</div>
+
+<div id="loadingState" class="hidden">
+Cargando posts...
+</div>
+
+<div id="emptyState" class="hidden">
+No se encontraron resultados
+</div>
+
+<div id="errorState" class="hidden">
+Ocurrió un error
+<button onclick="loadPosts()">Retry</button>
+</div>
+
+</section>
+
+<section id="postsContainer"></section>
+
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
