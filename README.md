@@ -29,7 +29,7 @@ Cada publicación contiene:
 
 ---
 
-## 🔍 Búsqueda de publicaciones
+##  Búsqueda de publicaciones
 
 El usuario puede buscar publicaciones utilizando palabras clave.
 
@@ -44,7 +44,7 @@ Si no existen resultados, la interfaz muestra un mensaje indicando que no se enc
 
 ---
 
-## ✏️ Creación de publicaciones
+##  Creación de publicaciones
 
 El usuario puede crear nuevas publicaciones utilizando el formulario disponible en el panel lateral.
 
@@ -72,7 +72,7 @@ La aplicación utiliza distintos estados para mejorar la experiencia del usuario
 
 ---
 
-# 🧩 Tecnologías utilizadas
+#  Tecnologías utilizadas
 
 Este proyecto fue desarrollado utilizando:
 
@@ -85,7 +85,7 @@ Este proyecto fue desarrollado utilizando:
 
 ---
 
-# 🌐 API utilizada
+#  API utilizada
 
 La aplicación utiliza la API pública:
 
@@ -121,11 +121,11 @@ Para ejecutar el proyecto localmente se utilizó **NGINX en WSL**.
 
 ### 1️ Copiar el proyecto al servidor
 
-
+sudo cp -r ~/Lab5-js /var/www/html/
 
 ### Abrir la aplicación
 http://localhost/Lab5-js
-### 📂 Estructura del proyecto
+###  Estructura del proyecto
 Lab5-js
 │
 ├── index.html
